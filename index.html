@@ -17,9 +17,8 @@
         /* Markdown Styles */
         .prose p { margin-bottom: 0.5em; }
         .prose ul { list-style-type: disc; padding-left: 1.2em; margin-bottom: 0.5em; }
-        
-        /* Image Toggle Transition */
-        .img-box { transition: all 0.3s ease; }
+        .prose ol { list-style-type: decimal; padding-left: 1.2em; margin-bottom: 0.5em; }
+        .prose strong { font-weight: 700; color: #1e3a8a; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 pb-20">
@@ -33,48 +32,158 @@
 
     <div class="max-w-4xl mx-auto px-4 py-6 space-y-6">
 
-        <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded shadow-sm">
-            <div class="flex items-start">
-                <div class="flex-shrink-0">
-                    <i class="fa-solid fa-triangle-exclamation text-red-500 mt-1"></i>
+        <div class="bg-white rounded-lg shadow-sm p-4 border border-slate-200">
+            <h3 class="font-bold text-slate-700 mb-3 border-b pb-2">航班資訊</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                <div class="flex items-center">
+                    <i class="fa-solid fa-plane-departure text-blue-500 w-8"></i>
+                    <div>
+                        <div class="font-bold">去程 (UO622)</div>
+                        <div class="text-slate-500">12/25 17:55 HKG -> 22:45 HND (T3)</div>
+                    </div>
                 </div>
-                <div class="ml-3 w-full">
-                    <h3 class="text-lg font-bold text-red-800">⚠️ 圖片上傳提醒</h3>
-                    <p class="text-sm text-red-700 mb-2">請確保已將圖片上傳至 GitHub，並使用以下檔名：<code>fig_a.png</code>, <code>fig_1.png</code>, <code>fig_2.png</code>...</p>
-                    <h3 class="text-lg font-bold text-red-800 mt-2">⚠️ 緊急待辦事項</h3>
-                    <ul class="space-y-2 text-sm mt-1">
-                        <li class="flex items-center justify-between bg-white p-2 rounded border border-red-100">
-                            <span><strong class="text-red-600">新幹線車票 (東京 ↔ 長野)</strong><br>請依照 Day 3 和 Day 7 的指定班次預約。</span>
-                            <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded font-bold">11/27 開賣</span>
-                        </li>
-                    </ul>
+                <div class="flex items-center">
+                    <i class="fa-solid fa-plane-arrival text-blue-500 w-8"></i>
+                    <div>
+                        <div class="font-bold">回程</div>
+                        <div class="text-red-500 font-bold">⚠️ 12/31 15:25 NRT (T2) -> HKG</div>
+                        <div class="text-xs text-slate-400">注意：回程是成田機場，距離妙高非常遠！</div>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="bg-white rounded-lg shadow-lg overflow-hidden">
             <div class="flex overflow-x-auto bg-slate-100 border-b scrollbar-hide">
-                <button onclick="openTab(event, 'day1')" class="tab-btn px-4 py-3 text-sm font-medium whitespace-nowrap border-b-2 border-transparent text-slate-500 hover:text-blue-600">Day 1 (12/25)</button>
-                <button onclick="openTab(event, 'day2')" class="tab-btn px-4 py-3 text-sm font-medium whitespace-nowrap border-b-2 border-transparent text-slate-500 hover:text-blue-600">Day 2 (12/26)</button>
-                <button onclick="openTab(event, 'day3')" class="tab-btn px-4 py-3 text-sm font-medium whitespace-nowrap border-b-2 border-blue-600 text-blue-600 bg-white">Day 3 (12/27)</button>
-                <button onclick="openTab(event, 'day4')" class="tab-btn px-4 py-3 text-sm font-medium whitespace-nowrap border-b-2 border-transparent text-slate-500 hover:text-blue-600">Day 4-6 (Ski)</button>
-                <button onclick="openTab(event, 'day7')" class="tab-btn px-4 py-3 text-sm font-medium whitespace-nowrap border-b-2 border-transparent text-red-500 font-bold hover:text-red-600">Day 7 (12/31)⚠️</button>
+                <button onclick="openTab(event, 'day1')" class="tab-btn px-4 py-3 text-sm font-medium whitespace-nowrap border-b-2 border-blue-600 text-blue-600 bg-white hover:text-blue-600 focus:outline-none">
+                    Day 1 (12/25)
+                </button>
+                <button onclick="openTab(event, 'day2')" class="tab-btn px-4 py-3 text-sm font-medium whitespace-nowrap border-b-2 border-transparent hover:text-blue-600 focus:outline-none text-slate-500">
+                    Day 2 (12/26)
+                </button>
+                <button onclick="openTab(event, 'day3')" class="tab-btn px-4 py-3 text-sm font-medium whitespace-nowrap border-b-2 border-transparent hover:text-blue-600 focus:outline-none text-slate-500">
+                    Day 3 (12/27)
+                </button>
+                <button onclick="openTab(event, 'day4')" class="tab-btn px-4 py-3 text-sm font-medium whitespace-nowrap border-b-2 border-transparent hover:text-blue-600 focus:outline-none text-slate-500">
+                    Day 4-6 (Ski)
+                </button>
+                <button onclick="openTab(event, 'day7')" class="tab-btn px-4 py-3 text-sm font-medium whitespace-nowrap border-b-2 border-transparent hover:text-red-600 focus:outline-none text-red-500 font-bold">
+                    Day 7 (12/31)⚠️
+                </button>
             </div>
 
             <div class="p-4 min-h-[400px]">
                 
-                <div id="day1" class="tab-content">
-                    <h2 class="text-xl font-bold mb-4">Day 1: 抵達東京</h2>
-                    <p class="text-sm text-slate-500">請參考原有行程...</p>
+                <div id="day1" class="tab-content active">
+                    <h2 class="text-xl font-bold mb-4 flex items-center"><i class="fa-solid fa-plane-arrival mr-2 text-blue-500"></i>抵達東京 - 深夜交通戰略</h2>
+                    <div class="relative pl-8 space-y-6">
+                        <div class="timeline-line"></div>
+                        
+                        <div class="relative">
+                            <div class="absolute -left-10 bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">1</div>
+                            <div class="font-bold text-lg">22:45 降落 HND T3</div>
+                            <p class="text-sm text-slate-600">過關、拿行李預計需時 45-60 分鐘。</p>
+                        </div>
+
+                        <div class="relative">
+                            <div class="absolute -left-10 bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">2</div>
+                            <div class="font-bold text-lg">23:45 出閘</div>
+                            <div class="bg-yellow-50 p-3 rounded mt-2 border border-yellow-200">
+                                <h4 class="font-bold text-sm mb-1">交通選擇 (關鍵決策):</h4>
+                                <ul class="text-sm list-disc list-inside space-y-1">
+                                    <li><strong>首選 (電車):</strong> 京急線 (Keikyu Line) 往品川。尾班車約 00:00 - 00:10。如果你能趕上，這是最便宜的。</li>
+                                    <li><strong>次選 (的士):</strong> 如果錯過電車，直接搭的士去品川/新橋。費用約 ¥8,000 - ¥10,000。幾個人分攤其實不貴，也最省力。</li>
+                                    <li><strong>備選 (巴士):</strong> 深夜利木津巴士只有去新宿/池袋 (較遠)，不建議，除非你住新宿。</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="relative">
+                            <div class="absolute -left-10 bg-green-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">3</div>
+                            <div class="font-bold text-lg">入住酒店</div>
+                            <p class="text-sm text-slate-600"><strong>推薦住宿區域：</strong>品川 (Shinagawa) 或 濱松町/新橋。</p>
+                            <p class="text-xs text-gray-500 mt-1">理由：從羽田來最快，且去Day 3的東京站搭新幹線最方便。</p>
+                        </div>
+                    </div>
                 </div>
 
                 <div id="day2" class="tab-content">
-                     <h2 class="text-xl font-bold mb-4">Day 2: 上野購物</h2>
-                     <p class="text-sm text-slate-500">請參考原有行程...</p>
+                    <h2 class="text-xl font-bold mb-4 flex items-center"><i class="fa-solid fa-bag-shopping mr-2 text-pink-500"></i>Day 2: 上野・御徒町 二手挖寶之旅</h2>
+                    
+                    <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 mb-6">
+                        <p class="text-xs text-slate-500 mb-2 font-bold"><i class="fa-solid fa-map-location-dot"></i> Chiikawa 風格攻略地圖</p>
+                        <img src="chiikawa_map.png" alt="請將你的圖片命名為 chiikawa_map.png 並上傳到 GitHub" class="w-full rounded shadow-md bg-white min-h-[100px] object-cover">
+                        <p class="text-[10px] text-slate-400 text-center mt-1">如果圖片未顯示，請確認已將圖片上傳至 GitHub 並命名為 <code>chiikawa_map.png</code></p>
+                    </div>
+
+                    <div class="relative pl-8 space-y-8">
+                        <div class="timeline-line"></div>
+
+                        <div class="relative">
+                            <div class="absolute -left-10 bg-slate-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">GO</div>
+                            <div class="font-bold">09:30 出發</div>
+                            <p class="text-sm font-medium">Ustay Nippori優宿日暮里</p>
+                            <p class="text-xs text-slate-500"> 京成高砂駅 10-15 分鐘至阿美橫丁入口。</p>
+                        </div>
+
+                        <div class="relative">
+                            <div class="absolute -left-10 bg-pink-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">1</div>
+                            <div class="font-bold">10:00 阿美橫丁中心大樓</div>
+                            <p class="text-sm font-medium text-slate-700">Ameyoko Center Bldg</p>
+                            <div class="bg-pink-50 p-2 rounded mt-1 border border-pink-100 text-sm">
+                                <p><strong>攻略：</strong>位於阿美橫丁三叉路口。剛開門人最少。</p>
+                                <p>🎯 <strong>目標：</strong>直接上 3F/4F 找飾品、銀飾、皮帶。</p>
+                            </div>
+                        </div>
+
+                        <div class="relative">
+                            <div class="absolute -left-10 bg-pink-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">2</div>
+                            <div class="font-bold">11:00 Mode Off 上野御徒町店</div>
+                            <p class="text-xs text-slate-500">🚶 走路 2 min</p>
+                            <p class="text-sm mt-1">專攻二手衣物，請盡情試穿喜歡的衣服。</p>
+                        </div>
+
+                        <div class="relative">
+                            <div class="absolute -left-10 bg-pink-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">3</div>
+                            <div class="font-bold">12:00 BOOKOFF SUPER BAZAAR</div>
+                            <p class="text-xs text-slate-500">🚶 走路 1 min (就在隔壁)</p>
+                            <p class="text-sm mt-1">除了書，還有公仔、名牌包、手錶。建議預留 1.5 小時。</p>
+                        </div>
+
+                        <div class="relative">
+                            <div class="absolute -left-10 bg-orange-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold"><i class="fa-solid fa-utensils"></i></div>
+                            <div class="font-bold text-orange-800">13:30 午餐 (附近吃)</div>
+                            <ul class="list-disc list-inside text-sm mt-2 bg-orange-50 p-2 rounded border border-orange-100">
+                                <li><strong>肉的大山:</strong> 知名炸肉餅 (Menchi Katsu)。</li>
+                                <li><strong>阿美橫丁海鮮丼:</strong> 便宜大碗。</li>
+                                <li><strong>鴨 to 蔥:</strong> 超人氣鴨肉拉麵 (若排隊太長請放棄)。</li>
+                            </ul>
+                        </div>
+
+                        <div class="relative">
+                            <div class="absolute -left-10 bg-pink-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">4</div>
+                            <div class="font-bold">14:30 Tanpopo House (たんぽぽハウス)</div>
+                            <p class="text-xs text-slate-500">🚶 往南走約 5 min (近御徒町站)</p>
+                            <p class="text-sm mt-1"><strong>終極便宜區！</strong>需要花時間「翻找」挖寶。</p>
+                        </div>
+
+                        <div class="relative">
+                            <div class="absolute -left-10 bg-indigo-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold"><i class="fa-solid fa-mug-hot"></i></div>
+                            <div class="font-bold">16:00 自由時間 / 下午茶</div>
+                            <p class="text-sm">Komeda's Coffee 或 Doutor 休息。</p>
+                            <p class="text-sm">或去 <strong>多慶屋 (Takeya)</strong> 買紫色招牌的零食伴手禮。</p>
+                        </div>
+
+                         <div class="relative">
+                            <div class="absolute -left-10 bg-slate-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">END</div>
+                            <div class="font-bold">19:30 回程</div>
+                            <p class="text-sm">御徒町站 (搭一站電車回上野，或散步回飯店)。</p>
+                        </div>
+                    </div>
                 </div>
 
-                <div id="day3" class="tab-content active">
-                    <h2 class="text-xl font-bold mb-4 flex items-center"><i class="fa-solid fa-train mr-2 text-blue-500"></i>Day 3: 前往長野與妙高</h2>
+                <div id="day3" class="tab-content">
+                    <h2 class="text-xl font-bold mb-4 flex items-center"><i class="fa-solid fa-train mr-2 text-blue-500"></i>Day 3: 前往長野與妙高 (12/27)</h2>
                     <div class="relative pl-8 space-y-8">
                         <div class="timeline-line"></div>
                         
@@ -180,8 +289,41 @@
                 </div>
 
                 <div id="day4" class="tab-content">
-                    <h2 class="text-xl font-bold mb-4">Day 4-6: 滑雪</h2>
-                    <p class="text-sm text-slate-500">請參考原有行程...</p>
+                    <h2 class="text-xl font-bold mb-4 flex items-center"><i class="fa-solid fa-person-skiing mr-2 text-cyan-500"></i>滑雪日 (12/28 - 12/30)</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-slate-50 p-4 rounded-lg">
+                            <h3 class="font-bold border-b pb-2 mb-2">每日時間表</h3>
+                            <ul class="space-y-3 text-sm">
+                                <li class="flex"><span class="w-16 font-bold text-slate-400">08:00</span> 早餐 (Hotel Taiko)</li>
+                                <li class="flex"><span class="w-16 font-bold text-slate-400">09:30</span> 穿好裝備，前往集合點</li>
+                                <li class="flex bg-cyan-50 p-1 rounded -mx-1"><span class="w-16 font-bold text-cyan-600">10:00</span> <span class="font-bold text-cyan-800">滑雪課開始 (教練已訂)</span></li>
+                                <li class="flex"><span class="w-16 font-bold text-slate-400">12:30</span> 午餐 (含在課程中)</li>
+                                <li class="flex bg-cyan-50 p-1 rounded -mx-1"><span class="w-16 font-bold text-cyan-600">16:00</span> <span class="font-bold text-cyan-800">課程結束 / 下山</span></li>
+                                <li class="flex"><span class="w-16 font-bold text-slate-400">17:00</span> 浸溫泉 (赤倉溫泉)</li>
+                                <li class="flex"><span class="w-16 font-bold text-slate-400">19:00</span> 晚餐</li>
+                            </ul>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+                                <h3 class="font-bold text-yellow-800 mb-2"><i class="fa-solid fa-utensils"></i> 晚餐危機處理</h3>
+                                <p class="text-sm mb-2">如果你訂的房間<strong>沒有包晚餐 (Half Board)</strong>，這幾天會很麻煩。</p>
+                                <p class="text-sm font-bold">選項：</p>
+                                <ol class="list-decimal list-inside text-sm space-y-1">
+                                    <li>現在馬上聯絡 Hotel Taiko 加訂晚餐 (最推薦)。</li>
+                                    <li>預約街上餐廳：<em>Shibata (居酒屋), Udon no Aji, Hunter</em>。</li>
+                                    <li>便利店：赤倉溫泉街有便利店，但很快被搶空。</li>
+                                </ol>
+                            </div>
+
+                            <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                                <h3 class="font-bold text-blue-800 mb-2"><i class="fa-solid fa-ticket"></i> 雪票 (Lift Ticket)</h3>
+                                <p class="text-sm">通常買 <strong>"Mt. Myoko Common Ticket"</strong> 或單獨買 <strong>"Akakura Onsen/Kanko"</strong> 聯票。</p>
+                                <p class="text-sm mt-1">Check-in 時在酒店前台詢問 "Discount Lift Ticket"，通常比雪場買便宜。</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div id="day7" class="tab-content">
@@ -257,26 +399,50 @@
 
     <div id="ai-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-end sm:items-center justify-center p-0 sm:p-4">
         <div class="bg-white w-full sm:max-w-md h-[80vh] sm:h-[600px] rounded-t-2xl sm:rounded-2xl shadow-2xl flex flex-col overflow-hidden relative">
+            
             <div class="bg-gradient-to-r from-blue-900 to-indigo-900 p-4 text-white flex justify-between items-center">
-                <div class="flex items-center gap-2"><i class="fa-solid fa-robot"></i><h3 class="font-bold">日本旅遊隨身 AI</h3></div>
-                <button onclick="toggleAiModal()" class="text-white hover:text-gray-300"><i class="fa-solid fa-xmark text-xl"></i></button>
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-robot"></i>
+                    <h3 class="font-bold">日本旅遊隨身 AI</h3>
+                </div>
+                <button onclick="toggleAiModal()" class="text-white hover:text-gray-300">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
             </div>
+
             <div id="chat-output" class="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-50">
-                 </div>
-            <div class="p-4 bg-white border-t border-slate-200">
-                <div class="flex gap-2">
-                    <input type="text" id="user-input" placeholder="輸入問題..." class="flex-1 border border-slate-300 rounded-lg px-4 py-2 text-sm">
-                    <button onclick="sendChat()" class="bg-blue-600 text-white rounded-lg px-4 py-2"><i class="fa-solid fa-paper-plane"></i></button>
+                <div class="flex items-start gap-2">
+                    <div class="bg-blue-100 rounded-lg p-3 text-sm max-w-[85%] text-slate-800">
+                        你好！我是你的日本旅遊助手。🇯🇵<br>
+                        我可以幫你翻譯、查詢交通、或建議美食。請問有什麼可以幫你？
+                    </div>
                 </div>
             </div>
+            
+            <div class="px-4 py-2 bg-white border-t border-slate-100 overflow-x-auto whitespace-nowrap scrollbar-hide">
+                <button onclick="sendQuickQuery('推薦新宿附近適合單人的拉麵店')" class="inline-block bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3 py-1.5 rounded-full mr-2 mb-1">🍜 新宿拉麵</button>
+                <button onclick="sendQuickQuery('翻譯成日文：我想從長野站寄行李到成田機場')" class="inline-block bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3 py-1.5 rounded-full mr-2 mb-1">🧳 翻譯:寄行李</button>
+                <button onclick="sendQuickQuery('12月25日深夜羽田機場的士去品川大概多少錢？')" class="inline-block bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3 py-1.5 rounded-full mr-2 mb-1">🚕 的士車費</button>
+            </div>
+
+            <div class="p-4 bg-white border-t border-slate-200">
+                <div class="flex gap-2">
+                    <input type="text" id="user-input" placeholder="輸入問題..." class="flex-1 border border-slate-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
+                    <button onclick="sendChat()" id="send-btn" class="bg-blue-600 hover:bg-blue-700 text-white rounded-lg px-4 py-2 transition-colors">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+
             <div id="ai-loading" class="absolute inset-0 bg-white bg-opacity-80 flex flex-col items-center justify-center hidden">
-                <div class="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-600 mb-3"></div><div class="text-blue-600 font-bold text-sm">AI 思考中...</div>
+                <div class="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-600 mb-3"></div>
+                <div class="text-blue-600 font-bold text-sm">AI 思考中...</div>
             </div>
         </div>
     </div>
 
     <script>
-        // --- Image Toggle Logic (New) ---
+        // --- Image Toggle Logic (圖文展開功能) ---
         function toggleImage(id) {
             const element = document.getElementById(id);
             if (element.classList.contains('hidden')) {
@@ -303,6 +469,7 @@
                 }
             }
             document.getElementById(tabName).classList.add("active");
+            
             const activeBtn = evt.currentTarget;
             activeBtn.classList.remove("text-slate-500", "border-transparent", "text-red-500");
             
@@ -313,17 +480,95 @@
             }
         }
 
-        // --- Gemini AI Logic (Keep your existing key and logic) ---
+        // --- Gemini AI Logic ---
+        // !!! IMPORTANT: PASTE YOUR GOOGLE API KEY BELOW INSIDE THE QUOTES !!!
         const apiKey = "PASTE_YOUR_API_KEY_HERE"; 
         
-        // (Include the rest of your JS functions: callGeminiAPI, sendChat, etc. here)
-        // ...
+        const systemPrompt = "You are a helpful and polite travel assistant for a user visiting Japan (Tokyo and Myoko Kogen) from Dec 25-31. Context: User is arriving late at Haneda on Dec 25, shopping in Tokyo on Dec 26, taking Shinkansen to Hotel Taiko (Myoko) on Dec 27. Skiing Dec 28-30. Returning from Narita on Dec 31 (very tight schedule). Answer queries concisely. If asked for translations, provide Japanese text and a simple pronunciation guide. If generating emails, be formal and polite.";
+
+        function toggleAiModal() {
+            const modal = document.getElementById('ai-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        function appendMessage(text, isUser = false) {
+            const output = document.getElementById('chat-output');
+            const div = document.createElement('div');
+            div.className = isUser ? "flex items-end justify-end gap-2" : "flex items-start gap-2";
+            
+            const bubble = document.createElement('div');
+            bubble.className = isUser 
+                ? "bg-blue-600 text-white rounded-lg rounded-tr-none p-3 text-sm max-w-[85%]" 
+                : "bg-slate-100 border border-slate-200 text-slate-800 rounded-lg rounded-tl-none p-3 text-sm max-w-[85%] prose";
+            
+            if (isUser) {
+                bubble.textContent = text;
+            } else {
+                bubble.innerHTML = marked.parse(text);
+            }
+
+            div.appendChild(bubble);
+            output.appendChild(div);
+            output.scrollTop = output.scrollHeight;
+        }
+
         async function callGeminiAPI(userQuery) {
-            // ... (Use previous logic)
+            if (apiKey === "PASTE_YOUR_API_KEY_HERE" || apiKey === "") {
+                return "⚠️ Please open the code file (index.html) and paste your Google API Key in line 527 to enable the AI features.";
+            }
+
+            const loading = document.getElementById('ai-loading');
+            loading.classList.remove('hidden');
+
+            try {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: userQuery }] }],
+                        systemInstruction: { parts: [{ text: systemPrompt }] }
+                    })
+                });
+
+                const data = await response.json();
+                loading.classList.add('hidden');
+
+                if (data.candidates && data.candidates[0].content) {
+                    return data.candidates[0].content.parts[0].text;
+                } else if (data.error) {
+                    console.error(data.error);
+                    return "Error from Google: " + data.error.message;
+                } else {
+                    return "Sorry, I encountered an error connecting to the AI.";
+                }
+            } catch (error) {
+                console.error("AI Error:", error);
+                loading.classList.add('hidden');
+                return "Network error. Please try again.";
+            }
         }
+
         async function sendChat() {
-            // ... (Use previous logic)
+            const input = document.getElementById('user-input');
+            const text = input.value.trim();
+            if (!text) return;
+
+            appendMessage(text, true);
+            input.value = '';
+
+            const response = await callGeminiAPI(text);
+            appendMessage(response, false);
         }
+
+        async function sendQuickQuery(text) {
+            appendMessage(text, true);
+            const response = await callGeminiAPI(text);
+            appendMessage(response, false);
+        }
+
+        document.getElementById('user-input').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') sendChat();
+        });
     </script>
 </body>
 </html>
