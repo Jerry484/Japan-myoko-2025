@@ -19,6 +19,16 @@
         .prose ul { list-style-type: disc; padding-left: 1.2em; margin-bottom: 0.5em; }
         .prose ol { list-style-type: decimal; padding-left: 1.2em; margin-bottom: 0.5em; }
         .prose strong { font-weight: 700; color: #1e3a8a; }
+        
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .scrollbar-hide {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 pb-20">
@@ -53,21 +63,28 @@
             </div>
         </div>
 
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-            <div class="flex overflow-x-auto bg-slate-100 border-b scrollbar-hide">
-                <button onclick="openTab(event, 'day1')" class="tab-btn px-4 py-3 text-sm font-medium whitespace-nowrap border-b-2 border-blue-600 text-blue-600 bg-white hover:text-blue-600 focus:outline-none">
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden relative">
+            
+            <div class="md:hidden bg-slate-50 border-b border-slate-100 py-1.5 px-4 flex justify-center items-center">
+                 <span class="text-[10px] text-slate-400 animate-pulse font-bold tracking-wider">
+                     <i class="fa-solid fa-arrow-left text-slate-300 mr-1"></i> 左右滑動查看更多日期 <i class="fa-solid fa-arrow-right text-slate-300 ml-1"></i>
+                 </span>
+            </div>
+
+            <div class="flex overflow-x-auto bg-slate-100 border-b scrollbar-hide snap-x">
+                <button onclick="openTab(event, 'day1')" class="tab-btn snap-start px-5 py-3 text-sm font-medium whitespace-nowrap border-b-2 border-blue-600 text-blue-600 bg-white hover:text-blue-600 focus:outline-none flex-shrink-0">
                     Day 1 (12/25)
                 </button>
-                <button onclick="openTab(event, 'day2')" class="tab-btn px-4 py-3 text-sm font-medium whitespace-nowrap border-b-2 border-transparent hover:text-blue-600 focus:outline-none text-slate-500">
+                <button onclick="openTab(event, 'day2')" class="tab-btn snap-start px-5 py-3 text-sm font-medium whitespace-nowrap border-b-2 border-transparent hover:text-blue-600 focus:outline-none text-slate-500 flex-shrink-0">
                     Day 2 (12/26)
                 </button>
-                <button onclick="openTab(event, 'day3')" class="tab-btn px-4 py-3 text-sm font-medium whitespace-nowrap border-b-2 border-transparent hover:text-blue-600 focus:outline-none text-slate-500">
+                <button onclick="openTab(event, 'day3')" class="tab-btn snap-start px-5 py-3 text-sm font-medium whitespace-nowrap border-b-2 border-transparent hover:text-blue-600 focus:outline-none text-slate-500 flex-shrink-0">
                     Day 3 (12/27)
                 </button>
-                <button onclick="openTab(event, 'day4')" class="tab-btn px-4 py-3 text-sm font-medium whitespace-nowrap border-b-2 border-transparent hover:text-blue-600 focus:outline-none text-slate-500">
+                <button onclick="openTab(event, 'day4')" class="tab-btn snap-start px-5 py-3 text-sm font-medium whitespace-nowrap border-b-2 border-transparent hover:text-blue-600 focus:outline-none text-slate-500 flex-shrink-0">
                     Day 4-6 (Ski)
                 </button>
-                <button onclick="openTab(event, 'day7')" class="tab-btn px-4 py-3 text-sm font-medium whitespace-nowrap border-b-2 border-transparent hover:text-red-600 focus:outline-none text-red-500 font-bold">
+                <button onclick="openTab(event, 'day7')" class="tab-btn snap-start px-5 py-3 text-sm font-medium whitespace-nowrap border-b-2 border-transparent hover:text-red-600 focus:outline-none text-red-500 font-bold flex-shrink-0">
                     Day 7 (12/31)⚠️
                 </button>
             </div>
@@ -101,8 +118,8 @@
                         <div class="relative">
                             <div class="absolute -left-10 bg-green-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">3</div>
                             <div class="font-bold text-lg">入住酒店</div>
-                            <p class="text-sm text-slate-600">Ustay Nippori優宿日暮里</p>
-                            <p class="text-xs text-gray-500 mt-1">地址：Regency Nippori, 6 Chome-52-8 Higashinippori, Arakawa City, Tokyo 116-0014, Japan</p>
+                            <p class="text-sm text-slate-600"><strong>推薦住宿區域：</strong>品川 (Shinagawa) 或 濱松町/新橋。</p>
+                            <p class="text-xs text-gray-500 mt-1">理由：從羽田來最快，且去Day 3的東京站搭新幹線最方便。</p>
                         </div>
                     </div>
                 </div>
@@ -113,7 +130,7 @@
                     <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 mb-6">
                         <p class="text-xs text-slate-500 mb-2 font-bold"><i class="fa-solid fa-map-location-dot"></i> Chiikawa 風格攻略地圖</p>
                         <img src="chiikawa_map.png" alt="請將你的圖片命名為 chiikawa_map.png 並上傳到 GitHub" class="w-full rounded shadow-md bg-white min-h-[100px] object-cover">
-                        <p class="text-[10px] text-slate-400 text-center mt-1">Generated by Jerry xD >Ge>
+                        <p class="text-[10px] text-slate-400 text-center mt-1">如果圖片未顯示，請確認已將圖片上傳至 GitHub 並命名為 <code>chiikawa_map.png</code></p>
                     </div>
 
                     <div class="relative pl-8 space-y-8">
@@ -442,7 +459,7 @@
     </div>
 
     <script>
-        // --- Image Toggle Logic (圖文展開功能) ---
+        // --- Image Toggle Logic ---
         function toggleImage(id) {
             const element = document.getElementById(id);
             if (element.classList.contains('hidden')) {
